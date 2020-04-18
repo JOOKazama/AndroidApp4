@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">app4</string>
+    <string name="send">Send</string>
+    <string name="numbers">Numbers:</string>
+    <string name="number">Enter a number:</string>
+    <string name="check">Check</string>
+    <string name="first">First assignment</string>
+    <string name="second">Second assignment</string>
+    <string name="return1">Return</string>
+</resources>

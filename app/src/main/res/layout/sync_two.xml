@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="351dp"
+            android:layout_height="34dp"
+            android:id="@+id/pb"
+            tools:ignore="MissingConstraints"
+            android:layout_marginTop="107dp"
+            android:layout_marginBottom="11dp" app:layout_constraintEnd_toEndOf="@+id/pb2"
+            app:layout_constraintBottom_toTopOf="@+id/pb2" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/pb2"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="351dp"
+            android:layout_height="34dp"
+            android:id="@+id/pb2"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@+id/pb" android:layout_marginBottom="17dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/pb3"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" android:layout_marginEnd="24dp" android:layout_marginRight="24dp"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/pb3"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@+id/pb2" android:layout_marginBottom="29dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/sync"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" android:layout_marginEnd="24dp" android:layout_marginRight="24dp"/>
+    <Button
+            android:text="@string/check"
+            android:layout_width="126dp"
+            android:layout_height="60dp"
+            android:id="@+id/sync"
+            tools:ignore="MissingConstraints"
+            android:onClick="Sendit"
+            app:layout_constraintTop_toBottomOf="@+id/pb3" app:layout_constraintEnd_toStartOf="@+id/return2"
+            android:layout_marginBottom="34dp" app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="66dp"
+            android:layout_marginStart="66dp" android:layout_marginEnd="19dp" android:layout_marginRight="19dp"/>
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/view2"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@+id/sync" android:layout_marginBottom="21dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="5dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="5dp" android:layout_marginEnd="5dp" android:layout_marginRight="5dp"/>
+    <Button
+            android:text="@string/return1"
+            android:layout_width="0dp"
+            android:layout_height="59dp" android:id="@+id/return2"
+            android:onClick="Returnit"
+            app:layout_constraintBaseline_toBaselineOf="@+id/sync" app:layout_constraintStart_toEndOf="@+id/sync"
+            android:layout_marginEnd="64dp" android:layout_marginRight="64dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
