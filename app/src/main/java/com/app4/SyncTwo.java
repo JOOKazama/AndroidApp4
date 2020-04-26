@@ -74,7 +74,7 @@ import java.util.Random;
                 try { Thread.sleep(500); }
                 catch (InterruptedException e) { e.printStackTrace(); }
             }
-            return true;
+            return (Math.random()<0.5);
         }
     }
 
@@ -90,7 +90,7 @@ import java.util.Random;
                 try { Thread.sleep(500); }
                 catch (InterruptedException e) { e.printStackTrace(); }
             }
-            return true;
+            return (Math.random()<0.5);
         }
 
         @Override protected void onPreExecute() { super.onPreExecute(); }

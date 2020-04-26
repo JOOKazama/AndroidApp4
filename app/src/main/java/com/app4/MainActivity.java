@@ -8,8 +8,7 @@ import android.os.Bundle;
 
 @SuppressLint("Registered") public class MainActivity extends AppCompatActivity
 {
-    Button first;
-    Button second;
+    Button first, second;
 
     @Override protected void onCreate(Bundle savedInstanceState)
     {
