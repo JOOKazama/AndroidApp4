@@ -1,4 +1,4 @@
-package com.app4;
+package com.All.Operations;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ProgressBar;
+import com.All.Main.MainActivity;
+import com.All.R;
 
 @SuppressLint("Registered")
 public class Query extends AppCompatActivity
@@ -42,7 +44,7 @@ public class Query extends AppCompatActivity
         }
     }
 
-    public void Returnit(View view) { startActivity(new Intent(Query.this,MainActivity.class)); }
+    public void Returnit(View view) { startActivity(new Intent(Query.this, MainActivity.class)); }
 
     @SuppressLint("StaticFieldLeak")
     class FirstAsyncTask extends AsyncTask<Integer, Integer, String>

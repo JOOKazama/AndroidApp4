@@ -1,4 +1,4 @@
-package com.app4;
+package com.All.Operations;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.All.Main.MainActivity;
+import com.All.R;
+
 import java.util.Random;
 
 @SuppressLint("Registered")
@@ -44,7 +47,7 @@ public class SyncTwo extends AppCompatActivity
         task2.execute();
     }
 
-    public void Returnit(View view) { startActivity(new Intent(SyncTwo.this,MainActivity.class)); }
+    public void Returnit(View view) { startActivity(new Intent(SyncTwo.this, MainActivity.class)); }
 
     @SuppressLint("StaticFieldLeak")
     private class DownloadTask extends AsyncTask<Void, Integer, Boolean>
