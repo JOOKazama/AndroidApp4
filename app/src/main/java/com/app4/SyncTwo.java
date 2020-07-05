@@ -14,11 +14,11 @@ import java.util.Random;
 
 @SuppressLint("Registered") public class SyncTwo extends AppCompatActivity
 {
-    ProgressBar pic, login, circle;
-    Button sync;
-    TextView tv;
-    boolean truepic;
-    boolean truelogin;
+    ProgressBar progress_bar, progress_bar1, progress_bar2;
+    Button button_check;
+    TextView result;
+    boolean boolean_picture;
+    boolean boolean_login;
     Random rand=new Random();
 
     @Override protected void onCreate(Bundle savedInstanceState)
@@ -26,17 +26,17 @@ import java.util.Random;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sync_two);
 
-        pic=findViewById(R.id.pb);
-        login=findViewById(R.id.pb2);
-        circle=findViewById(R.id.pb3);
-        tv=findViewById(R.id.view2);
-        sync=findViewById(R.id.sync);
-        circle.setVisibility(View.INVISIBLE);
+        progress_bar=findViewById(R.id.progress_bar);
+        progress_bar1=findViewById(R.id.progress_bar1);
+        progress_bar2=findViewById(R.id.progress_bar2);
+        result=findViewById(R.id.result);
+        button_check=findViewById(R.id.button_check);
+        progress_bar2.setVisibility(View.INVISIBLE);
     }
 
     public void Sendit(View view)
     {
-        circle.setVisibility(View.VISIBLE);
+        progress_bar2.setVisibility(View.VISIBLE);
         DownloadTask task=new DownloadTask();
         LoginTask task2=new LoginTask();
         task.execute();
@@ -45,7 +45,8 @@ import java.util.Random;
 
     public void Returnit(View view) { startActivity(new Intent(SyncTwo.this,MainActivity.class)); }
 
-    @SuppressLint("StaticFieldLeak") private class DownloadTask extends AsyncTask<Void,Integer,Boolean>
+    @SuppressLint("StaticFieldLeak")
+    private class DownloadTask extends AsyncTask<Void, Integer, Boolean>
     {
         @Override protected void onPreExecute()
         {
@@ -55,30 +56,32 @@ import java.util.Random;
         @Override protected void onPostExecute(Boolean aBoolean)
         {
             super.onPostExecute(aBoolean);
-            truepic=aBoolean;
+            boolean_picture=aBoolean;
         }
 
         @Override protected void onProgressUpdate(Integer... values)
         {
             super.onProgressUpdate(values);
-            pic.setProgress(values[0]);
+            progress_bar.setProgress(values[0]);
         }
 
         @Override protected Boolean doInBackground(Void... voids)
         {
             int range=rand.nextInt(2)+3;
 
-            for (int i=0; i<range; i++)
+            for(int i=0; i<range; i++)
             {
                 publishProgress((i*100)/range);
                 try { Thread.sleep(500); }
-                catch (InterruptedException e) { e.printStackTrace(); }
+                catch(InterruptedException e) { e.printStackTrace(); }
             }
-            return (Math.random()<0.5);
+
+            return(Math.random()<0.5);
         }
     }
 
-    @SuppressLint("StaticFieldLeak") private class LoginTask extends AsyncTask<Void,Integer,Boolean>
+    @SuppressLint("StaticFieldLeak")
+    private class LoginTask extends AsyncTask<Void, Integer, Boolean>
     {
         @Override protected Boolean doInBackground(Void... voids)
         {
@@ -88,9 +91,10 @@ import java.util.Random;
             {
                 publishProgress((i*100)/range);
                 try { Thread.sleep(500); }
-                catch (InterruptedException e) { e.printStackTrace(); }
+                catch(InterruptedException e) { e.printStackTrace(); }
             }
-            return (Math.random()<0.5);
+
+            return(Math.random()<0.5);
         }
 
         @Override protected void onPreExecute() { super.onPreExecute(); }
@@ -98,19 +102,19 @@ import java.util.Random;
         @Override protected void onPostExecute(Boolean aBoolean)
         {
             super.onPostExecute(aBoolean);
-            circle.setVisibility(View.INVISIBLE);
-            truelogin=aBoolean;
-            tv.setTextColor(Color.BLUE);
-            tv.setTextSize(100);
-            tv.setGravity(Gravity.CENTER_HORIZONTAL);
-            if(truepic&&truelogin) { tv.setText("Success!"); }
-            else { tv.setText("Nah!"); }
+            progress_bar2.setVisibility(View.INVISIBLE);
+            boolean_login=aBoolean;
+            result.setTextColor(Color.BLUE);
+            result.setTextSize(100);
+            result.setGravity(Gravity.CENTER_HORIZONTAL);
+            if(boolean_picture && boolean_login) { result.setText("Success!"); }
+            else { result.setText("Nah!"); }
         }
 
         @Override protected void onProgressUpdate(Integer... values)
         {
             super.onProgressUpdate(values);
-            login.setProgress(values[0]);
+            progress_bar1.setProgress(values[0]);
         }
     }
 }

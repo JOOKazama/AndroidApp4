@@ -8,19 +8,19 @@ import android.os.Bundle;
 
 @SuppressLint("Registered") public class MainActivity extends AppCompatActivity
 {
-    Button first, second;
+    Button first_assignment, second_assignment;
 
     @Override protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        first=findViewById(R.id.first);
-        second=findViewById(R.id.second);
+        first_assignment=findViewById(R.id.first_assignment);
+        second_assignment=findViewById(R.id.second_assignment);
 
-        first.setOnClickListener(new View.OnClickListener()
+        first_assignment.setOnClickListener(new View.OnClickListener()
         { @Override public void onClick(View v) { startActivity(new Intent(MainActivity.this,Query.class)); } });
-        second.setOnClickListener(new View.OnClickListener()
+        second_assignment.setOnClickListener(new View.OnClickListener()
         { @Override public void onClick(View v) { startActivity(new Intent(MainActivity.this,SyncTwo.class)); } });
     }
 }

@@ -13,68 +13,70 @@ import androidx.appcompat.app.AppCompatActivity;
 
 @SuppressLint("Registered") public class Query extends AppCompatActivity
 {
-    Button button, return1;
-    EditText text;
-    TextView view;
+    Button button_send, button_return;
+    EditText number;
+    TextView result;
 
     @Override protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.query);
 
-        button=findViewById(R.id.button);
-        text=findViewById(R.id.text);
-        view=findViewById(R.id.view);
-        return1=findViewById(R.id.return1);
+        button_send=findViewById(R.id.button_send);
+        number=findViewById(R.id.number);
+        result=findViewById(R.id.result);
+        button_return=findViewById(R.id.button_return);
     }
 
     public void Sendit(View view)
     {
-        if(TextUtils.isEmpty(text.getText().toString()))
+        if(TextUtils.isEmpty(number.getText().toString()))
         { Toast.makeText(Query.this, "Enter value!", Toast.LENGTH_SHORT).show(); }
         else
         {
-            FirstAsyncTask task = new FirstAsyncTask();
-            task.execute(Integer.parseInt(text.getText().toString()));
+            FirstAsyncTask first_async_task=new FirstAsyncTask();
+            first_async_task.execute(Integer.parseInt(number.getText().toString()));
         }
     }
 
     public void Returnit(View view) { startActivity(new Intent(Query.this,MainActivity.class)); }
 
-    @SuppressLint("StaticFieldLeak") class FirstAsyncTask extends AsyncTask<Integer,Integer,String>
+    @SuppressLint("StaticFieldLeak")
+    class FirstAsyncTask extends AsyncTask<Integer,Integer,String>
     {
-        ProgressDialog pg;
+        ProgressDialog progress_dialog;
 
         @Override protected void onPreExecute()
         {
             super.onPreExecute();
-            pg = ProgressDialog.show(Query.this, "Counting down: ", "Don't be in a hurry!");
+            progress_dialog=ProgressDialog.show(Query.this, "Counting down: ", "Don't be in a hurry!");
         }
 
         @Override protected void onPostExecute(String s)
         {
             super.onPostExecute(s);
-            pg.dismiss();
-            view.setText(s);
-            view.setTextColor(Color.GREEN);
-            view.setTextSize(100);
-            view.setGravity(Gravity.CENTER_HORIZONTAL);
+            progress_dialog.dismiss();
+            number.setText(s);
+            number.setTextColor(Color.GREEN);
+            number.setTextSize(100);
+            number.setGravity(Gravity.CENTER_HORIZONTAL);
         }
 
         @Override protected void onProgressUpdate(Integer... values)
         {
             super.onProgressUpdate(values);
-            pg.setMessage(values[0]+" sec.");
+            progress_dialog.setMessage(values[0]+" sec.");
         }
 
         @Override protected String doInBackground(Integer... integers)
         {
-            for(int i=integers[0];i>0;i--)
+            for(int i=integers[0]; i>0; i--)
             {
                 publishProgress((i));
                 try { Thread.sleep(500); }
-                catch (InterruptedException e) {e.printStackTrace(); }
+                catch(InterruptedException e) {e.printStackTrace(); }
             }
+
             return "Done!";
         }
     }
