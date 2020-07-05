@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" android:id="@+id/constraint_layout">
 
     <Button
             android:text="@string/send"
@@ -12,22 +12,17 @@
             android:layout_height="50dp"
             android:id="@+id/button_send"
             tools:ignore="MissingConstraints"
-            app:layout_constraintTop_toBottomOf="@+id/number"
-            android:layout_marginBottom="9dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/button_return"
-            app:layout_constraintStart_toStartOf="parent"
-            android:onClick="Sendit"/>
-
+            android:onClick="Sendit" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="121dp" android:layout_marginStart="121dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/number" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="120dp" android:layout_marginRight="120dp"/>
     <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="410dp"
+            android:layout_height="459dp"
             android:id="@+id/result"
-            app:layout_constraintTop_toBottomOf="@+id/button_return"
-            android:layout_marginBottom="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:layout_marginEnd="1dp" android:layout_marginRight="1dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp" app:layout_constraintTop_toBottomOf="@+id/progress_bar_new"/>
 
     <EditText
             android:layout_width="291dp"
@@ -39,28 +34,29 @@
             tools:ignore="LabelFor,MissingConstraints"
             android:autofillHints=""
             android:inputType="number"
-            android:layout_marginTop="28dp"
-            android:layout_marginBottom="17dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/button_send"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="47dp"
-            android:layout_marginStart="47dp"
-            android:layout_marginEnd="47dp"
-            android:layout_marginRight="47dp"/>
-
+            android:layout_marginLeft="60dp" android:layout_marginStart="60dp" android:layout_marginTop="50dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="60dp" android:layout_marginRight="60dp"/>
     <Button
             android:text="@string/return1"
             android:layout_width="170dp"
             android:layout_height="50dp"
             android:id="@+id/button_return"
             tools:ignore="MissingConstraints"
-            app:layout_constraintTop_toBottomOf="@+id/button_send"
-            android:layout_marginBottom="22dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/result"
-            app:layout_constraintStart_toStartOf="parent"
-            android:onClick="Returnit"/>
+            android:onClick="Returnit"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="121dp"
+            android:layout_marginStart="121dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="120dp" android:layout_marginRight="120dp"
+            app:layout_constraintTop_toBottomOf="@+id/button_send"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="400dp"
+            android:layout_height="42dp"
+            android:id="@+id/progress_bar_new"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp" android:layout_marginTop="9dp"
+            app:layout_constraintTop_toBottomOf="@+id/button_return"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

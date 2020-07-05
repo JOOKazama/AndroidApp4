@@ -1,6 +1,5 @@
 package com.app4;
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -10,10 +9,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.ProgressBar;
 
-@SuppressLint("Registered") public class Query extends AppCompatActivity
+@SuppressLint("Registered")
+public class Query extends AppCompatActivity
 {
     Button button_send, button_return;
+    ProgressBar progress_bar;
     EditText number;
     TextView result;
 
@@ -26,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
         number=findViewById(R.id.number);
         result=findViewById(R.id.result);
         button_return=findViewById(R.id.button_return);
+        progress_bar=findViewById(R.id.progress_bar_new);
     }
 
     public void Sendit(View view)
@@ -42,34 +45,35 @@ import androidx.appcompat.app.AppCompatActivity;
     public void Returnit(View view) { startActivity(new Intent(Query.this,MainActivity.class)); }
 
     @SuppressLint("StaticFieldLeak")
-    class FirstAsyncTask extends AsyncTask<Integer,Integer,String>
+    class FirstAsyncTask extends AsyncTask<Integer, Integer, String>
     {
-        ProgressDialog progress_dialog;
 
         @Override protected void onPreExecute()
         {
             super.onPreExecute();
-            progress_dialog=ProgressDialog.show(Query.this, "Counting down: ", "Don't be in a hurry!");
+            progress_bar.setVisibility(View.VISIBLE);
         }
 
         @Override protected void onPostExecute(String s)
         {
             super.onPostExecute(s);
-            progress_dialog.dismiss();
-            number.setText(s);
-            number.setTextColor(Color.GREEN);
-            number.setTextSize(100);
-            number.setGravity(Gravity.CENTER_HORIZONTAL);
+            progress_bar.setVisibility(View.GONE);
+            result.setText(s);
+            result.setTextColor(Color.GREEN);
+            result.setTextSize(100);
+            result.setGravity(Gravity.CENTER_HORIZONTAL);
         }
 
         @Override protected void onProgressUpdate(Integer... values)
         {
             super.onProgressUpdate(values);
-            progress_dialog.setMessage(values[0]+" sec.");
+            progress_bar.setProgress(values[0]);
         }
 
         @Override protected String doInBackground(Integer... integers)
         {
+            progress_bar.setMax(integers[0]);
+
             for(int i=integers[0]; i>0; i--)
             {
                 publishProgress((i));

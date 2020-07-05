@@ -12,7 +12,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
-@SuppressLint("Registered") public class SyncTwo extends AppCompatActivity
+@SuppressLint("Registered")
+public class SyncTwo extends AppCompatActivity
 {
     ProgressBar progress_bar, progress_bar1, progress_bar2;
     Button button_check;
@@ -26,7 +27,7 @@ import java.util.Random;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sync_two);
 
-        progress_bar=findViewById(R.id.progress_bar);
+        progress_bar=findViewById(R.id.progress_bar_new);
         progress_bar1=findViewById(R.id.progress_bar1);
         progress_bar2=findViewById(R.id.progress_bar2);
         result=findViewById(R.id.result);

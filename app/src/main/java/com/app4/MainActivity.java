@@ -6,10 +6,10 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-@SuppressLint("Registered") public class MainActivity extends AppCompatActivity
+@SuppressLint("Registered")
+public class MainActivity extends AppCompatActivity
 {
     Button first_assignment, second_assignment;
-    int a;
 
     @Override protected void onCreate(Bundle savedInstanceState)
     {
